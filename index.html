@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
   <link rel="manifest" href="manifest.json">
-
 <meta name="theme-color" content="#2563eb">
 <meta name="background-color" content="#020617">
 
@@ -271,7 +270,6 @@ async function decryptPack(pack, pass){
   const ptBuf=await crypto.subtle.decrypt({name:"AES-GCM", iv}, key, ct);
   return td.decode(ptBuf);
 }
-
 /* ===== Tabs ===== */
 const tEnc=document.getElementById("tEnc");
 const tDec=document.getElementById("tDec");
@@ -286,13 +284,11 @@ function setTab(which){
 }
 tEnc.addEventListener("click", ()=>setTab("enc"));
 tDec.addEventListener("click", ()=>setTab("dec"));
-
 /* ===== Encrypt UI ===== */
 const encText=document.getElementById("encText");
 const encPass=document.getElementById("encPass");
 const encOut=document.getElementById("encOut");
 const encStatus=document.getElementById("encStatus");
-
 document.getElementById("encBtn").addEventListener("click", async ()=>{
   encStatus.textContent=""; encStatus.className="status"; encOut.textContent="";
   const txt=encText.value??""; const pass=encPass.value??"";
@@ -305,7 +301,6 @@ document.getElementById("encBtn").addEventListener("click", async ()=>{
     encStatus.textContent="Error"; encStatus.className="status err";
   }
 });
-
 document.getElementById("copyEnc").addEventListener("click", async ()=>{
   const v=encOut.textContent.trim(); if(!v) return;
   try{ await navigator.clipboard.writeText(v); encStatus.textContent="Copiado"; encStatus.className="status ok"; }catch{}
@@ -313,7 +308,6 @@ document.getElementById("copyEnc").addEventListener("click", async ()=>{
 document.getElementById("clearEnc").addEventListener("click", ()=>{
   encText.value=""; encPass.value=""; encOut.textContent=""; encStatus.textContent=""; encStatus.className="status";
 });
-
 /* ===== Decrypt UI ===== */
 const decPack=document.getElementById("decPack");
 const decPass=document.getElementById("decPass");
@@ -332,7 +326,6 @@ document.getElementById("decBtn").addEventListener("click", async ()=>{
     decStatus.textContent="Clave o paquete inválido"; decStatus.className="status err";
   }
 });
-
 document.getElementById("copyDec").addEventListener("click", async ()=>{
   const v=decOut.textContent.trim(); if(!v) return;
   try{ await navigator.clipboard.writeText(v); decStatus.textContent="Copiado"; decStatus.className="status ok"; }catch{}
@@ -340,7 +333,6 @@ document.getElementById("copyDec").addEventListener("click", async ()=>{
 document.getElementById("clearDec").addEventListener("click", ()=>{
   decPack.value=""; decPass.value=""; decOut.textContent=""; decStatus.textContent=""; decStatus.className="status";
 });
-
 /* ===== Telegram panel + fallback anti ERR_UNKNOWN_URL_SCHEME ===== */
 const tgPanel=document.getElementById("tgPanel");
 const tgFab=document.getElementById("tgFab");
@@ -353,7 +345,6 @@ function toggleTG(force){
 }
 tgFab.addEventListener("click", ()=>toggleTG());
 tgClose.addEventListener("click", ()=>toggleTG(false));
-
 function buildDeepLink(urlHttps){
   try{
     const u=new URL(urlHttps);
@@ -367,7 +358,6 @@ function buildDeepLink(urlHttps){
     return `tg://resolve?domain=${encodeURIComponent(username)}`;
   }catch{ return null; }
 }
-
 function tryOpenAppScheme(schemeUrl){
   const iframe=document.createElement("iframe");
   iframe.style.display="none";
@@ -375,7 +365,6 @@ function tryOpenAppScheme(schemeUrl){
   document.body.appendChild(iframe);
   setTimeout(()=>{ try{ document.body.removeChild(iframe); }catch{} }, 1200);
 }
-
 /*
   openTG(urlHttps):
   1) Intenta abrir Telegram (deep link) sin romper WebView (iframe oculto)
