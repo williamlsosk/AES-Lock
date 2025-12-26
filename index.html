@@ -394,24 +394,20 @@ document.querySelectorAll(".tg-item").forEach(el=>{
     if(url) openTG(url);
   });
 });
-
 document.addEventListener("click", (e)=>{
   if(!tgPanel.classList.contains("open")) return;
   if(tgPanel.contains(e.target) || tgFab.contains(e.target)) return;
   toggleTG(false);
 });
+</script>
 <script>
 /* === Registro del Service Worker (PWA) === */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("./pwabuilder-sw.js")
-      .then(reg => {
-        console.log("Service Worker registrado:", reg.scope);
-      })
-      .catch(err => {
-        console.error("Error registrando Service Worker:", err);
-      });
+      .then(reg => console.log("Service Worker registrado:", reg.scope))
+      .catch(err => console.error("Error registrando Service Worker:", err));
   });
 }
 </script>
