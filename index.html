@@ -354,8 +354,7 @@ document.addEventListener("click", (e)=>{
 /* === Registro del Service Worker (PWA) === */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./pwabuilder-sw.js")
+    navigator.serviceWorker.register("./pwabuilder-sw.js?v=5");
       .then(reg => console.log("Service Worker registrado:", reg.scope))
       .catch(err => console.error("Error registrando Service Worker:", err));
   });
