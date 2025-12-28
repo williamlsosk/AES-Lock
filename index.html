@@ -4,10 +4,8 @@
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2563eb">
 <meta name="background-color" content="#020617">
-
 <link rel="icon" sizes="192x192" href="icon-192.png">
 <link rel="icon" sizes="512x512" href="icon-512.png">
-
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -43,7 +41,6 @@
     box-shadow: 0 18px 40px rgba(0,0,0,.45);
   }
   h1{margin:0 0 14px;text-align:center;font-weight:800;letter-spacing:.2px}
-
   .tabs{display:flex;gap:10px;margin:10px 0 12px}
   .tabs button{
     flex:1;padding:12px;border-radius:14px;border:none;background:#1e293b;
@@ -51,21 +48,18 @@
   }
   .tabs button:active{transform:scale(.99)}
   .tabs button.active{background:var(--blue);color:#fff}
-
   textarea,input{
     width:100%;background: rgba(2,6,23,.75);color:#fff;
     border:1px solid var(--stroke);border-radius:14px;padding:14px;margin-bottom:12px;font-size:15px;outline:none;
   }
   textarea{min-height:120px;resize:vertical}
   input::placeholder, textarea::placeholder{color:#64748b}
-
   .main{
     width:100%;padding:14px;border-radius:16px;border:none;background:var(--blue);
     color:#fff;font-weight:900;font-size:16px;cursor:pointer;transition: transform .08s ease, filter .15s ease;
   }
   .main:active{transform:scale(.99)}
   .main:hover{filter:brightness(1.05)}
-
   .output{
     border:1px dashed rgba(37,99,235,.9);border-radius:14px;padding:12px;margin-top:10px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -74,7 +68,6 @@
   .status{margin-top:10px;font-weight:800;font-size:14px}
   .status.ok{color:var(--ok)}
   .status.err{color:var(--err)}
-
   .row{display:flex;gap:10px;margin-top:10px}
   .ghost{
     flex:1;padding:12px;border-radius:14px;border:1px solid rgba(148,163,184,.25);
@@ -91,7 +84,6 @@
   .tg-fab svg{
     width:30px;height:30px;display:block;overflow:visible;fill:#fff;
   }
-
   .tg-panel{
     position:fixed;right:18px;bottom:92px;width:min(340px, calc(100vw - 36px));
     background: rgba(2,6,23,.92);
@@ -128,50 +120,39 @@
 </style>
 </head>
 <body>
-
 <div class="app">
   <div class="card">
     <h1>🔐 Lock AES</h1>
-
     <div class="tabs">
       <button id="tEnc" class="active" type="button">Encrypt</button>
       <button id="tDec" type="button">Decrypt</button>
     </div>
-
     <div id="encView">
       <textarea id="encText" placeholder="Texto"></textarea>
       <input id="encPass" type="password" placeholder="Clave" />
       <button id="encBtn" class="main" type="button">Encrypt</button>
       <div class="output" id="encOut"></div>
       <div class="status" id="encStatus"></div>
-
       <div class="row">
         <button class="ghost" id="copyEnc" type="button">Copiar</button>
         <button class="ghost" id="clearEnc" type="button">Limpiar</button>
       </div>
-
-      <p class="small">
-        Formato: <b>LOCK1.i=… .salt .iv .ct</b> (AES‑GCM). Todo se cifra localmente.
       </p>
     </div>
-
     <div id="decView" style="display:none;">
       <textarea id="decPack" placeholder="Paquete cifrado (LOCK1....)"></textarea>
       <input id="decPass" type="password" placeholder="Clave" />
       <button id="decBtn" class="main" type="button">Decrypt</button>
       <div class="output" id="decOut"></div>
       <div class="status" id="decStatus"></div>
-
       <div class="row">
         <button class="ghost" id="copyDec" type="button">Copiar</button>
         <button class="ghost" id="clearDec" type="button">Limpiar</button>
       </div>
-
       <p class="small">Si la clave o el paquete no coinciden, no se podrá descifrar.</p>
     </div>
   </div>
 </div>
-
 <!-- BOTÓN TELEGRAM -->
 <button class="tg-fab" id="tgFab" type="button" aria-label="Telegram" title="Telegram">
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -179,14 +160,12 @@
       4.77 3.49c.88.49 1.5.23 1.73-.81l3.14-14.72v-.01c.3-1.38-.5-1.92-1.36-1.6L2.4 9.14c-1.35.53-1.33 1.29-.23 1.63l4.42 1.38L17.1 6.5c.49-.33.94-.15.57.18L9.2 13.27c-.3.24-.29.56-.06.7l6.88 5.18" />
   </svg>
 </button>
-
 <!-- PANEL TELEGRAM -->
 <div class="tg-panel" id="tgPanel" aria-hidden="true">
   <div class="tg-head">
     <h3>Telegram</h3>
     <button class="tg-close" id="tgClose" type="button" aria-label="Cerrar">×</button>
   </div>
-
   <div class="tg-item" data-tg="https://t.me/forzagrupo">
     <div class="tg-left"><span>Forza</span><small>@forzagrupo</small></div><div class="tg-arrow">↗</div>
   </div>
@@ -205,12 +184,10 @@
   <div class="tg-item" data-tg="https://t.me/+0qw3nXYO7NA3NGNh">
     <div class="tg-left"><span>TIO-P3L1CULAS</span><small>Invite link</small></div><div class="tg-arrow">↗</div>
   </div>
-
   <p class="small" style="margin:6px 2px 0;">
-    Tip: si tienes Telegram instalado, normalmente se abre directo. Si no, se abre en el navegador.
+    Tip: Si tienes Telegram instalado, normalmente se abre directo. Si no, se abre en el navegador.
   </p>
 </div>
-
 <script>
 /* ===== Base64 URL-safe helpers ===== */
 function b64u(bytes){
@@ -228,11 +205,9 @@ function u8(b64url){
 }
 const td=new TextDecoder();
 const te=new TextEncoder();
-
 const VERSION="LOCK1";
 const PBKDF2_ITERS=200000;
 const KEY_BITS=256;
-
 async function keyFromPass(pass, saltU8){
   const baseKey = await crypto.subtle.importKey(
     "raw", te.encode(pass), {name:"PBKDF2"}, false, ["deriveKey"]
@@ -246,7 +221,6 @@ async function keyFromPass(pass, saltU8){
   );
 }
 function randBytes(n){const a=new Uint8Array(n);crypto.getRandomValues(a);return a;}
-
 async function encryptText(plain, pass){
   const salt=randBytes(16);
   const iv=randBytes(12);
@@ -311,7 +285,6 @@ const decPack=document.getElementById("decPack");
 const decPass=document.getElementById("decPass");
 const decOut=document.getElementById("decOut");
 const decStatus=document.getElementById("decStatus");
-
 document.getElementById("decBtn").addEventListener("click", async ()=>{
   decStatus.textContent=""; decStatus.className="status"; decOut.textContent="";
   const pack=decPack.value??""; const pass=decPass.value??"";
@@ -331,11 +304,9 @@ document.getElementById("copyDec").addEventListener("click", async ()=>{
 document.getElementById("clearDec").addEventListener("click", ()=>{
   decPack.value=""; decPass.value=""; decOut.textContent=""; decStatus.textContent=""; decStatus.className="status";
 });
-/* ===== Telegram panel + fallback anti ERR_UNKNOWN_URL_SCHEME ===== */
 const tgPanel=document.getElementById("tgPanel");
 const tgFab=document.getElementById("tgFab");
 const tgClose=document.getElementById("tgClose");
-
 function toggleTG(force){
   const open=(typeof force==="boolean") ? force : !tgPanel.classList.contains("open");
   tgPanel.classList.toggle("open", open);
@@ -363,18 +334,11 @@ function tryOpenAppScheme(schemeUrl){
   document.body.appendChild(iframe);
   setTimeout(()=>{ try{ document.body.removeChild(iframe); }catch{} }, 1200);
 }
-/*
-  openTG(urlHttps):
-  1) Intenta abrir Telegram (deep link) sin romper WebView (iframe oculto)
-  2) Fallback SIEMPRE a https://t.me/... para evitar la pantalla:
-     net::ERR_UNKNOWN_URL_SCHEME
-*/
 function openTG(urlHttps){
   const deep=buildDeepLink(urlHttps);
   if(deep){ try{ tryOpenAppScheme(deep); }catch{} }
   setTimeout(()=>{ window.location.href=urlHttps; }, 450);
 }
-
 document.querySelectorAll(".tg-item").forEach(el=>{
   el.addEventListener("click", ()=>{
     const url=el.getAttribute("data-tg");
